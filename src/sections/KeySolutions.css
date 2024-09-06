@@ -1,0 +1,73 @@
+.key-solutions {
+  font-family: 'Rubik', sans-serif;
+  margin: 0 auto;
+}
+
+.ks-container {
+  margin: 0 auto;
+  max-width: 1270px;
+  padding: 1rem;
+}
+
+.key-solutions h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.key-solutions .description {
+  text-align: center;
+  color: #292a2e;
+  font-size: 16px;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  line-height: 1.5rem;
+  max-width: 650px;
+}
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: 1rem;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs.overflowing {
+  cursor: grab;
+}
+
+.tabs.overflowing:active {
+  cursor: grabbing;
+}
+
+.tab {
+  font-family: 'Rubik', sans-serif;
+  font-size: .875rem;
+  padding: 12px 18px;
+  background-color: #e5f2f9;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tab.active {
+  background-color: #0077be;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .tabs {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,305 @@
+.ubiquiti-content {
+  background-color: black;
+  background-image: url('https://newsabalita.wordpress.com/wp-content/uploads/2024/09/background-image.da6c8cbf.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.ui-container {
+  margin: 0 auto;
+  max-width: 1270px;
+  padding: 1rem;
+}
+
+.ubiquiti-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+  color: white;
+}
+
+.ui-main-description {
+  text-align: center;
+  color: rgb(159, 165, 173);
+  font-size: 16px;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  line-height: 1.5rem;
+  max-width: 1020px;
+}
+
+.unifi-section {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+}
+
+.unifi-list {
+  order: 1;
+  flex: 1;
+  max-width: 380px;
+  padding: 0px 8px 0px 8px;
+}
+
+.unifi-list h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: left;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.unifi-item {
+  margin-bottom: 24px;
+}
+
+.unifi-item-header {
+  display: flex;
+  align-items: center;
+}
+
+.unifi-item .number {
+  color: white;
+  background-color: rgb(2, 3, 5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.unifi-item h4 {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.unifi-item-content {
+  padding-left: 3.5rem;
+}
+
+.unifi-item p {
+  font-size: 1rem;
+  color: rgb(159, 165, 173);
+  margin-top: 0px;
+  margin-bottom: 10px;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.watch-video {
+  color: #0077be;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  transition: color 0.25s ease-in-out;
+}
+
+.watch-video:hover {
+    color: #005d94;
+}
+
+.watch-video svg {
+    margin-left: 10px;
+    transition: transform 0.25s ease-in-out;
+}
+
+.watch-video:hover svg {
+    transform: translateX(3px);
+}
+  
+.unifi-video {
+  order: 2;
+  flex: 1;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background-color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+.play-pause-btn {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.play-pause-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.progress-ring__circle {
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-linecap: round;
+}
+
+.feature-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.feature-cards {
+  width: 100%;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.feature-card {
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-image {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 32px 40px 48px;
+} 
+
+.card-content h3 {
+  color: white;
+  text-align: left;
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.card-content p {
+  text-align: left;
+  font-size: 1rem;
+  color: rgb(159, 165, 173);
+  line-height: 1.5rem;
+  margin-top: 0px;
+}
+
+.learn-more {
+  color: #0077be;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  transition: color 0.25s ease-in-out;
+}
+
+.learn-more:hover {
+    color: #005d94;
+}
+
+.learn-more svg {
+    margin-left: 10px;
+    transition: transform 0.25s ease-in-out;
+}
+
+.learn-more:hover svg {
+    transform: translateX(3px);
+}
+
+@media (min-width: 1024px) {
+  .feature-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .swiper-wrapper {
+    display: contents; /* Use CSS Grid instead of Swiper for desktop */
+  }
+
+  .swiper-slide {
+    width: auto !important; /* Override Swiper's inline styles */
+  }
+}
+
+@media (max-width: 768px) {
+  .unifi-section {
+    flex-direction: column;
+  }
+
+  .unifi-list {
+    order: 2;
+    flex: 1;
+    max-width: none;
+  }
+  
+  .unifi-video {
+    order: 1;
+    flex: 1;
+  }
+}
