@@ -114,8 +114,8 @@ export default function NavBar() {
           </ul>
         </nav>
         <div className="button-container">
-          <button className="button button-outline">Become a reseller</button>
-          <button className="button button-primary">Sign In</button>
+          <button className="button button-outline">Register</button>
+          <button className="button button-primary">Sign in</button>
         </div>
         <button
           className="mobile-menu-button"
