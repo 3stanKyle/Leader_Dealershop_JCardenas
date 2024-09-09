@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import './BannerCarousel.css';
 
 const BannerCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [nextSlide, setNextSlide] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const progressInterval = useRef(null);
   const slideDuration = 5000; // 5 seconds per slide
   
@@ -33,27 +34,47 @@ const BannerCarousel = () => {
     },
   ];
 
-  const nextSlide = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentSlide((prev) => (prev + 1) % banners.length);
-    setProgress(0);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
+  const startTransition = useCallback((newIndex) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setNextSlide(newIndex);
+    
+    // Start fade out
+    setTimeout(() => {
+      // Fade in new slide
+      setCurrentSlide(newIndex);
+      setNextSlide(null);
+      
+      // End transition
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 500);
+    }, 500);
+  }, [isTransitioning]);
 
-  const prevSlide = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
+  const goToNextSlide = useCallback(() => {
+    const newIndex = (currentSlide + 1) % banners.length;
+    startTransition(newIndex);
     setProgress(0);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
+  }, [currentSlide, banners.length, startTransition]);
+
+  const goToPrevSlide = useCallback(() => {
+    const newIndex = (currentSlide - 1 + banners.length) % banners.length;
+    startTransition(newIndex);
+    setProgress(0);
+  }, [currentSlide, banners.length, startTransition]);
 
   useEffect(() => {
+    const advanceSlide = () => {
+      if (!isTransitioning) {
+        goToNextSlide();
+      }
+    };
+
     progressInterval.current = setInterval(() => {
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
-          nextSlide();
+          advanceSlide();
           return 0;
         }
         return prevProgress + (100 / (slideDuration / 100));
@@ -61,14 +82,12 @@ const BannerCarousel = () => {
     }, 100);
 
     return () => clearInterval(progressInterval.current);
-  }, [currentSlide]);
+  }, [goToNextSlide, isTransitioning]);
 
   const goToSlide = (index) => {
-    if (isAnimating || index === currentSlide) return;
-    setIsAnimating(true);
-    setCurrentSlide(index);
+    if (index === currentSlide || isTransitioning) return;
+    startTransition(index);
     setProgress(0);
-    setTimeout(() => setIsAnimating(false), 500);
   };
 
   return (
@@ -79,11 +98,11 @@ const BannerCarousel = () => {
           className={`banner-image ${index === currentSlide ? 'active' : ''}`}
           style={{ 
             backgroundImage: `url(${banner.bgImage})`,
-            display: index === currentSlide ? 'block' : 'none',
+            display: index === currentSlide || index === nextSlide ? 'block' : 'none',
           }}
         ></div>
       ))}
-      <div className={`banner-content ${!isAnimating ? 'active' : ''}`}>
+      <div className={`banner-content ${!isTransitioning ? 'active' : ''}`}>
         <div className="banner-logo">
           <img src={banners[currentSlide].logo} alt="Logo" />
         </div>
@@ -99,16 +118,16 @@ const BannerCarousel = () => {
       
       <button 
         className="nav-button prev-button"
-        onClick={prevSlide}
-        disabled={isAnimating}
+        onClick={goToPrevSlide}
+        disabled={isTransitioning}
       >
         <ChevronLeft />
       </button>
       
       <button 
         className="nav-button next-button"
-        onClick={nextSlide}
-        disabled={isAnimating}
+        onClick={goToNextSlide}
+        disabled={isTransitioning}
       >
         <ChevronRight />
       </button>
@@ -119,7 +138,7 @@ const BannerCarousel = () => {
             key={index}
             className={`pagination-dot ${index === currentSlide ? 'active' : ''}`}
             onClick={() => goToSlide(index)}
-            disabled={isAnimating}
+            disabled={isTransitioning}
           >
             {index === currentSlide && (
               <div 
