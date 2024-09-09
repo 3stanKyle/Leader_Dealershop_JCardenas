@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Leader_Dealershop_JCardenas/static/css/main.c8379f00.css",
-    "main.js": "/Leader_Dealershop_JCardenas/static/js/main.505fd222.js",
+    "main.css": "/Leader_Dealershop_JCardenas/static/css/main.ed26185c.css",
+    "main.js": "/Leader_Dealershop_JCardenas/static/js/main.d608b08c.js",
     "static/js/453.0b40bc98.chunk.js": "/Leader_Dealershop_JCardenas/static/js/453.0b40bc98.chunk.js",
     "index.html": "/Leader_Dealershop_JCardenas/index.html",
-    "main.c8379f00.css.map": "/Leader_Dealershop_JCardenas/static/css/main.c8379f00.css.map",
-    "main.505fd222.js.map": "/Leader_Dealershop_JCardenas/static/js/main.505fd222.js.map",
+    "main.ed26185c.css.map": "/Leader_Dealershop_JCardenas/static/css/main.ed26185c.css.map",
+    "main.d608b08c.js.map": "/Leader_Dealershop_JCardenas/static/js/main.d608b08c.js.map",
     "453.0b40bc98.chunk.js.map": "/Leader_Dealershop_JCardenas/static/js/453.0b40bc98.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8379f00.css",
-    "static/js/main.505fd222.js"
+    "static/css/main.ed26185c.css",
+    "static/js/main.d608b08c.js"
   ]
 }
