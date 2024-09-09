@@ -5,6 +5,7 @@ import './BannerCarousel.css';
 const BannerCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   const progressInterval = useRef(null);
   const slideDuration = 5000; // 5 seconds per slide
   
@@ -33,13 +34,19 @@ const BannerCarousel = () => {
   ];
 
   const nextSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
     setCurrentSlide((prev) => (prev + 1) % banners.length);
     setProgress(0);
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   const prevSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
     setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
     setProgress(0);
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   useEffect(() => {
@@ -57,19 +64,26 @@ const BannerCarousel = () => {
   }, [currentSlide]);
 
   const goToSlide = (index) => {
+    if (isAnimating || index === currentSlide) return;
+    setIsAnimating(true);
     setCurrentSlide(index);
     setProgress(0);
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   return (
     <div className="banner-carousel">
-      <div 
-        className="banner-image"
-        style={{ 
-          backgroundImage: `url(${banners[currentSlide].bgImage})`,
-        }}
-      ></div>
-      <div className="banner-content">
+      {banners.map((banner, index) => (
+        <div
+          key={index}
+          className={`banner-image ${index === currentSlide ? 'active' : ''}`}
+          style={{ 
+            backgroundImage: `url(${banner.bgImage})`,
+            display: index === currentSlide ? 'block' : 'none',
+          }}
+        ></div>
+      ))}
+      <div className={`banner-content ${!isAnimating ? 'active' : ''}`}>
         <div className="banner-logo">
           <img src={banners[currentSlide].logo} alt="Logo" />
         </div>
@@ -86,6 +100,7 @@ const BannerCarousel = () => {
       <button 
         className="nav-button prev-button"
         onClick={prevSlide}
+        disabled={isAnimating}
       >
         <ChevronLeft />
       </button>
@@ -93,6 +108,7 @@ const BannerCarousel = () => {
       <button 
         className="nav-button next-button"
         onClick={nextSlide}
+        disabled={isAnimating}
       >
         <ChevronRight />
       </button>
@@ -103,6 +119,7 @@ const BannerCarousel = () => {
             key={index}
             className={`pagination-dot ${index === currentSlide ? 'active' : ''}`}
             onClick={() => goToSlide(index)}
+            disabled={isAnimating}
           >
             {index === currentSlide && (
               <div 
