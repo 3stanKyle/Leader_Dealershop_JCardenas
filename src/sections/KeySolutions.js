@@ -10,7 +10,7 @@ const KeySolutions = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isOverflowing, setIsOverflowing] = useState(false);
 
-  const tabs = ['Unified Communications', 'Leader Cloud', 'Ubiquiti Networks', 'Breeze Connect', 'Smart Infrastructure'];
+  const tabs = ['Unified Communications','Meeting Room Technology', 'Leader Cloud', 'Ubiquiti Networks', 'Breeze Connect', 'Smart Infrastructure'];
 
   const renderTabContent = () => {
     switch(activeTab) {
@@ -18,6 +18,8 @@ const KeySolutions = () => {
         return <UbiquitiNetworks />;
       case 'Unified Communications':
         return <div>Unified Communications content coming soon...</div>;
+      case 'Meeting Room Technology':
+        return <div>Meeting Room Technology coming soon...</div>;
       case 'Leader Cloud':
         return <div>Leader Cloud content coming soon...</div>;
       case 'Breeze Connect':
