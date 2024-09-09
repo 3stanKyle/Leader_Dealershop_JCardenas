@@ -59,14 +59,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.banner-content-inner {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
 .banner-content.active {
   opacity: 1;
   transform: translateY(0);
+  animation: fadeInUp 0.5s ease-out;
 }
 
 .banner-logo {

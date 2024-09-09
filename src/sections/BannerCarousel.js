@@ -4,7 +4,6 @@ import './BannerCarousel.css';
 
 const BannerCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [nextSlide, setNextSlide] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
   const progressInterval = useRef(null);
@@ -37,19 +36,11 @@ const BannerCarousel = () => {
   const startTransition = useCallback((newIndex) => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setNextSlide(newIndex);
+    setCurrentSlide(newIndex);
     
-    // Start fade out
     setTimeout(() => {
-      // Fade in new slide
-      setCurrentSlide(newIndex);
-      setNextSlide(null);
-      
-      // End transition
-      setTimeout(() => {
-        setIsTransitioning(false);
-      }, 500);
-    }, 500);
+      setIsTransitioning(false);
+    }, 500); // Match this with the CSS transition duration
   }, [isTransitioning]);
 
   const goToNextSlide = useCallback(() => {
@@ -98,21 +89,22 @@ const BannerCarousel = () => {
           className={`banner-image ${index === currentSlide ? 'active' : ''}`}
           style={{ 
             backgroundImage: `url(${banner.bgImage})`,
-            display: index === currentSlide || index === nextSlide ? 'block' : 'none',
           }}
         ></div>
       ))}
-      <div className={`banner-content ${!isTransitioning ? 'active' : ''}`}>
-        <div className="banner-logo">
-          <img src={banners[currentSlide].logo} alt="Logo" />
-        </div>
-        <div className="banner-text">
-          <h2>{banners[currentSlide].title}</h2>
-          <p>{banners[currentSlide].subtitle}</p>
-          <button className="cta-button">
-            {banners[currentSlide].buttonText}
-            <ArrowRight className="arrow-icon" />
-          </button>
+      <div className="banner-content">
+        <div key={currentSlide} className="banner-content-inner">
+          <div className="banner-logo">
+            <img src={banners[currentSlide].logo} alt="Logo" />
+          </div>
+          <div className="banner-text">
+            <h2>{banners[currentSlide].title}</h2>
+            <p>{banners[currentSlide].subtitle}</p>
+            <button className="cta-button">
+              {banners[currentSlide].buttonText}
+              <ArrowRight className="arrow-icon" />
+            </button>
+          </div>
         </div>
       </div>
       
