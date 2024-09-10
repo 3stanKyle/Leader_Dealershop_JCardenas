@@ -1,44 +1,31 @@
 import React, { useState } from 'react';
 import './NavBar.css';
+import SolutionsDropdown from './SolutionsDropdown';
 
 const menuItems = [
   { title: "Value", href: "/value" },
   { title: "Vendors", href: "/vendors" },
   {
     title: "Solutions",
-    items: [
-      { title: "Solution 1", href: "/solutions/solution-1" },
-      { title: "Solution 2", href: "/solutions/solution-2" },
-    ],
+    dropdown: SolutionsDropdown
   },
-  {
-    title: "Training",
-    items: [
-      { title: "Course 1", href: "/training/course-1" },
-      { title: "Course 2", href: "/training/course-2" },
-    ],
-  },
-  {
-    title: "Support",
-    items: [
-      { title: "Help Center", href: "/support/help-center" },
-      { title: "FAQs", href: "/support/faqs" },
-    ],
-  },
-  {
-    title: "About",
-    items: [
-      { title: "Our Story", href: "/about/our-story" },
-      { title: "Team", href: "/about/team" },
-    ],
-  },
-  {
-    title: "Contact",
-    items: [
-      { title: "Sales", href: "/contact/sales" },
-      { title: "Support", href: "/contact/support" },
-    ],
-  },
+  // Uncomment these as you create the corresponding dropdown components
+  // {
+  //   title: "Training",
+  //   dropdown: TrainingDropdown
+  // },
+  // {
+  //   title: "Support",
+  //   dropdown: SupportDropdown
+  // },
+  // {
+  //   title: "About",
+  //   dropdown: AboutDropdown
+  // },
+  // {
+  //   title: "Contact",
+  //   dropdown: ContactDropdown
+  // },
 ];
 
 const DropdownArrow = () => (
@@ -55,12 +42,17 @@ const DropdownArrow = () => (
 );
 
 export default function NavBar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const handleDropdownToggle = (title) => {
+    setActiveDropdown(activeDropdown === title ? null : title);
+  };
 
   return (
-    <header className="header">
-      <div className="nav-container">
-        <a href="/" className="logo">
+    <>
+      <header className="header">
+        <div className="nav-container">
+          <a href="/" className="logo">
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                viewBox="0 0 190 96" style={{enableBackground: "new 0 0 190 96"}}>
             <style type="text/css">
@@ -83,70 +75,39 @@ export default function NavBar() {
               </g>
             </g>
           </svg>
-        </a>
-        <nav className="nav-menu">
-          <ul className="nav-list">
-            {menuItems.map((item) => (
-              <li key={item.title} className="nav-item">
-                {item.items ? (
-                  <>
-                    <span className="nav-link nav-link-with-dropdown">
+          </a>
+          <nav className="nav-menu">
+            <ul className="nav-list">
+              {menuItems.map((item) => (
+                <li key={item.title} className="nav-item">
+                  {item.dropdown ? (
+                    <div 
+                      className="nav-item-with-dropdown"
+                      onMouseEnter={() => handleDropdownToggle(item.title)}
+                      onMouseLeave={() => handleDropdownToggle(null)}
+                    >
+                      <span className="nav-link nav-link-with-dropdown">
+                        {item.title}
+                        <DropdownArrow />
+                      </span>
+                      {activeDropdown === item.title && <item.dropdown />}
+                    </div>
+                  ) : (
+                    <a href={item.href} className="nav-link">
                       {item.title}
-                      <DropdownArrow />
-                    </span>
-                    <ul className="nav-dropdown">
-                      {item.items.map((subItem) => (
-                        <li key={subItem.title} className="dropdown-item">
-                          <a href={subItem.href} className="dropdown-link">
-                            {subItem.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <a href={item.href} className="nav-link">
-                    {item.title}
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="button-container">
-          <button className="button button-outline">Register</button>
-          <button className="button button-primary">Sign in</button>
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="button-container">
+            <button className="button button-outline">Register</button>
+            <button className="button button-primary">Sign in</button>
+          </div>
         </div>
-        <button
-          className="mobile-menu-button"
-          onClick={() => setIsMobileMenuOpen(true)}
-        >
-          ☰
-        </button>
-      </div>
-      {isMobileMenuOpen && (
-        <div className="mobile-menu open">
-          <button
-            className="mobile-menu-close"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            ×
-          </button>
-          <ul className="mobile-nav-list">
-            {menuItems.map((item) => (
-              <li key={item.title} className="mobile-nav-item">
-                <a
-                  href={item.href || '#'}
-                  className="mobile-nav-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </header>
+      </header>
+      <div className={`blur-overlay ${activeDropdown ? 'active' : ''}`}></div>
+    </>
   );
 }
