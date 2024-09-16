@@ -34,22 +34,22 @@ const solutionsItems = [
   { 
     title: "Smart Infrastructure", 
     description: "Infrastructure solutions to organizations of all sizes",
-    icon: "https://newsabalita.wordpress.com/wp-content/uploads/2024/09/infrastructure-40.png",
+    icon: "https://newsabalita.wordpress.com/wp-content/uploads/2024/09/servers-48.png",
     href: "/solutions/smart-infrastructure" 
   },
 ];
 
 const SolutionsDropdown = () => {
   return (
-    <div className="nav-dropdown solutions-dropdown">
+    <div className="nav-dropdown dropdown-menu-solutions">
       {solutionsItems.map((item) => (
-        <a key={item.title} href={item.href} className="dropdown-item solutions-item">
-          <div className="solutions-content">
-            <div className="solutions-icon">
+        <a key={item.title} href={item.href} className="dropdown-menu-item">
+          <div className="dropdown-menu-content">
+            <div className="dropdown-menu-icon">
                 <img width="40" height="40" src={item.icon} alt={item.title} />
             </div>
-            <h3 className="solutions-title">{item.title}</h3>
-            <p className="solutions-description">{item.description}</p>
+            <h3 className="dropdown-menu-item-title">{item.title}</h3>
+            <p className="dropdown-menu-item-description">{item.description}</p>
           </div>
         </a>
       ))}

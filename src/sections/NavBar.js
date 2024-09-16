@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './NavBar.css';
 import SolutionsDropdown from './SolutionsDropdown';
+import TrainingDropdown from './TrainingDropdown';
+import SupportDropdown from './SupportDropdown';
+import AboutDropdown from './AboutDropdown';
+import ContactDropdown from './ContactDropdown';
 
 const menuItems = [
   { title: "Value", href: "/value" },
@@ -9,23 +13,22 @@ const menuItems = [
     title: "Solutions",
     dropdown: SolutionsDropdown
   },
-  // Uncomment these as you create the corresponding dropdown components
-  // {
-  //   title: "Training",
-  //   dropdown: TrainingDropdown
-  // },
-  // {
-  //   title: "Support",
-  //   dropdown: SupportDropdown
-  // },
-  // {
-  //   title: "About",
-  //   dropdown: AboutDropdown
-  // },
-  // {
-  //   title: "Contact",
-  //   dropdown: ContactDropdown
-  // },
+  {
+    title: "Training",
+    dropdown: TrainingDropdown
+  },
+  {
+  title: "Support",
+  dropdown: SupportDropdown
+  },
+  {
+  title: "About",
+  dropdown: AboutDropdown
+  },
+  {
+  title: "Contact",
+  dropdown: ContactDropdown
+  },
 ];
 
 const DropdownArrow = () => (
@@ -107,7 +110,7 @@ export default function NavBar() {
           </div>
         </div>
       </header>
-      <div className={`blur-overlay ${activeDropdown ? 'active' : ''}`}></div>
+      <div className={`screen-overlay ${activeDropdown ? 'active' : ''}`}></div>
     </>
   );
 }
