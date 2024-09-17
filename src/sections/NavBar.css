@@ -282,7 +282,7 @@
   background-color: #0077be;
 }
 
-/* contact dropdown styles dito boiii */
+/* end ng contact dropdown styles dito boiii */
 
 .button-container {
   display: flex;
@@ -306,7 +306,8 @@
 }
 
 .button-outline:hover {
-  background-color: #0077be;
+  background-color: #00a2ff;
+  border: none;
   color: white;
 }
 

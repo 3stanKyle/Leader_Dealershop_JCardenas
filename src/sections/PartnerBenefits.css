@@ -1,0 +1,209 @@
+.benefit-section {
+    width: 100%;
+  }
+  
+  .benefit-container {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .benefit-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+    font-weight: 550;
+    color: #0a2540;
+  }
+  
+  .benefit-subtitle {
+    text-align: center;
+    color: #425466;
+    font-size: 1rem;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    line-height: 1.5rem;
+    max-width: 768px;
+  }
+  
+  .benefit-grid {
+    display: grid;
+    gap: 1rem;
+    padding: .5rem;
+  }
+  
+  .benefit-card {
+    position: relative;
+    background-color: white;
+    border-radius: .625rem;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s;
+    overflow: hidden;
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .benefit-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #0077be;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .benefit-card:hover::before {
+    opacity: 1;
+  }
+  
+  .benefit-card-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .benefit-icon {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    transition: opacity 0.3s;
+  }
+  
+  .benefit-card:hover .benefit-icon {
+    opacity: 0;
+  }
+  
+  .benefit-card-title {
+    font-size: 1.25rem;
+    font-weight: 550;
+    margin: 0 0 .75rem;
+    transition: color 0.3s;
+  }
+  
+  .benefit-card-description {
+    color: #4b5563;
+    margin: 0 0 1rem;
+    transition: color 0.3s;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .benefit-card:hover .benefit-card-title,
+  .benefit-card:hover .benefit-card-description {
+    color: white;
+  }
+  
+  .benefit-cta {
+    font-family: 'Rubik', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #0077be;
+    border: none;
+    color: white;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  
+  .benefit-card:hover .benefit-cta {
+    background-color: white;
+    color: #0077be;
+  }  
+  
+  .benefit-cta svg {
+    margin-left: 0.5rem;
+    width: 0.875rem;
+    height: 0.875rem;
+    transition: transform 0.3s;
+  }
+  
+  .benefit-cta:hover svg {
+    transform: translateX(0.25rem);
+  }
+  
+  .benefit-action-buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .benefit-action-button {
+    font-family: 'Rubik', sans-serif;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.938rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .benefit-action-button-primary {
+    background-color: transparent;
+    border: 1px solid #0077be;
+    color: #0077be;
+  }
+  
+  .benefit-action-button-primary:hover {
+    background-color: #007aff;
+    border: 1px solid #ffffff00;
+    color: white;
+  }
+  
+  .benefit-action-button-secondary {
+    border: none;
+    background-color: #0077be;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .benefit-action-button-secondary:hover {
+    background-color: #007aff;
+  }
+  
+  .benefit-action-button-secondary svg {
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.3s;
+  }
+
+  .benefit-action-button-secondary:hover svg {
+    transform: translateX(0.25rem);
+  }
+
+  @media (min-width: 640px) {
+    .benefit-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .benefit-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefit-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
