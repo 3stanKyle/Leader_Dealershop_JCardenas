@@ -12,34 +12,39 @@ const benefits = [
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/warehouse-96.png',
     cta: 'See Locations',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_localstock-3.jpg',
+    link: 'https://www.leadersystems.com.au/contact'
   },
   {
     title: 'Fast Dropship',
     description: 'Delivering speed and convenience where and when you need it',
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/fast-delivery-96.png',
-    cta: 'Learn More',
+    cta: 'Freight Policy',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_fastdelivery.jpg',
+    link: 'https://leadermarketing.com.au/EDM/Leader-23122021/freightpolicy.pdf'
   },
   {
     title: 'Support Helpdesk',
-    description: '8×5 phone, e-mail, and remote assistance, all for free',
+    description: '8×5 phone support, e-mail, and remote assistance, all for free',
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/service-96.png',
     cta: 'Contact Us',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_helpdeskk.jpg',
+    link: 'https://www.leadersystems.com.au/contact'    
   },
   {
     title: 'Training & Certs.',
-    description: 'Empower yourself with free online training at Leader Academy',
+    description: 'Upskill and transform your knowledge into profit at Leader Academy',
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/academy-96.png',
     cta: 'Start Learning',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_training.jpg',
+    link: 'https://leader-academy.com.au/'
   },
   {
     title: 'Marketing Tools',
-    description: 'Boost your efficiency and sales with free marketing tools!',
+    description: 'Go to market fast with our free tools and turbocharge your efficiency',
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/marketing-96.png',
     cta: 'Marketing Portal',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_marketing.jpg',
+    link: 'https://leadermarketing.com.au/'
   },
   {
     title: '71+ Vendors',
@@ -47,6 +52,7 @@ const benefits = [
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/vendor-96.png',
     cta: 'View Vendors',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_vendor-1.jpg',
+    link: 'https://www.leadersystems.com.au/vendors'
   },
   {
     title: 'Personal Sales',
@@ -54,13 +60,15 @@ const benefits = [
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/sales-manager-96.png',
     cta: 'Contact Sales',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_personalsales.jpg',
+    link: 'https://www.leadersystems.com.au/contact'
   },
   {
     title: 'Leader Expo',
-    description: 'Elevate your expertise with our complimentary national expo & events',
+    description: 'Elevate your expertise with our complimentary national expo & exclusive events',
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/expo-96.png',
     cta: 'View Schedules',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_expo.jpg',
+    link: 'https://leaderexpo.com.au/'
   },
   {
     title: 'Data Feed',
@@ -68,13 +76,15 @@ const benefits = [
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/datafeed-96.png',
     cta: 'View Dashboard',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_datafeed.jpg',
+    link: 'https://www.leadersystems.com.au/datafeeddownload.html'
   },
   {
     title: 'PC Configurator',
-    description: 'Elevate Your Expertise with Our Complimentary National Expo',
+    description: 'Craft the ideal solution for your customers with a wide array of options',
     icon: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/workstation-96.png',
     cta: 'Customise PC',
     bgImage: 'https://newsabalita.wordpress.com/wp-content/uploads/2024/09/benefit_pcconfig.jpg',
+    link: 'https://www.leadersystems.com.au/configurator.html'
   },
 ]
 
@@ -84,10 +94,10 @@ const BenefitCard = ({ benefit }) => (
       <img src={benefit.icon} alt={`${benefit.title} icon`} className="benefit-icon" />
       <h3 className="benefit-card-title">{benefit.title}</h3>
       <p className="benefit-card-description">{benefit.description}</p>
-      <button className="benefit-cta">
+      <a href={benefit.link} className="benefit-cta">
         {benefit.cta}
         <ArrowRight />
-      </button>
+      </a>
     </div>
   </div>
 )
