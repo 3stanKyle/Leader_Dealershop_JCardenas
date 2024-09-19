@@ -1,6 +1,6 @@
 .ubiquiti-content {
-  background-color: black;
-  background-image: url('https://newsabalita.wordpress.com/wp-content/uploads/2024/09/background-image.da6c8cbf.jpg');
+  background-color: white;
+  background-image: url('https://newsabalita.wordpress.com/wp-content/uploads/2024/09/unifi-bg_solution.webp');
   background-size: cover;
   background-position: center;
 }
@@ -16,13 +16,13 @@
   margin-bottom: 20px;
   text-align: center;
   font-weight: 500;
-  color: white;
+  color: #0a2540;
 }
 
 .ui-main-description {
   text-align: center;
-  color: rgb(159, 165, 173);
-  font-size: 16px;
+  color: #425466;
+  font-size: 1rem;
   margin: 0 auto;
   margin-bottom: 1.5rem;
   line-height: 1.5rem;
@@ -34,10 +34,10 @@
   flex-direction: row;
   gap: 24px;
   padding: 12px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
 }
 
 .unifi-list {
@@ -53,7 +53,7 @@
   text-align: left;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  color: white;
+  color: #0a2540;
 }
 
 .unifi-item {
@@ -66,9 +66,9 @@
 }
 
 .unifi-item .number {
-  color: white;
-  background-color: rgb(2, 3, 5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  background-color: #0077be;
+  border: none;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -82,7 +82,7 @@
 }
 
 .unifi-item h4 {
-  color: white;
+  color: #0a2540;
   font-size: 1rem;
   font-weight: 500;
   margin: 0;
@@ -93,8 +93,8 @@
 }
 
 .unifi-item p {
-  font-size: 1rem;
-  color: rgb(159, 165, 173);
+  font-size: .938rem;
+  color: #425466;
   margin-top: 0px;
   margin-bottom: 10px;
   text-align: left;
@@ -104,7 +104,8 @@
 .watch-video {
   color: #0077be;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: .938rem;
+  font-weight: 500;
   text-align: left;
   display: flex;
   align-items: center;
@@ -205,10 +206,10 @@
 
 .feature-card {
   flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
   overflow: hidden;
 }
 
@@ -232,7 +233,7 @@
 } 
 
 .card-content h3 {
-  color: white;
+  color: #0a2540;
   text-align: left;
   font-size: 20px;
   margin-top: 0px;
@@ -243,7 +244,7 @@
 .card-content p {
   text-align: left;
   font-size: 1rem;
-  color: rgb(159, 165, 173);
+  color: #425466;
   line-height: 1.5rem;
   margin-top: 0px;
 }
