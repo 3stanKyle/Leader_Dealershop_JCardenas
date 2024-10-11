@@ -320,3 +320,52 @@
 .button-primary:hover {
   background-color: #00a2ff;
 }
+
+/* burger menu */
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu.mobile-open {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: 15px;
+    display: block;
+  }
+
+  .nav-item-with-dropdown {
+    padding: 15px;
+  }
+
+  .button-container {
+    display: none;
+  }
+}
