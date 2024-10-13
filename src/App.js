@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import NavBar from './sections/NavBar';
 import BannerCarousel from './sections/BannerCarousel';
 import AnimatedStatsCounter from './sections/AnimatedStatsCounter';
@@ -26,8 +26,10 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Navigate replace to="/" />} />
           <Route path="/vendors" element={<VendorPage />} />
-          {/* Add more routes for other pages as needed */}
+          {/* Catch-all route to redirect to home */}
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </div>
     </Router>
