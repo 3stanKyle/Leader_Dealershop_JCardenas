@@ -8,8 +8,8 @@ import AboutDropdown from './AboutDropdown';
 import ContactDropdown from './ContactDropdown';
 
 const menuItems = [
-  { title: "Value", href: "/value" },
-  { title: "Vendors", href: "/vendors" },
+  { title: "Value", to: "/value" },
+  { title: "Vendors", to: "/vendors" },
   {
     title: "Solutions",
     dropdown: SolutionsDropdown
@@ -56,7 +56,7 @@ export default function NavBar() {
     <>
       <header className="header">
         <div className="nav-container">
-          <a href="/" className="logo">
+          <Link to="/" className="logo">
             <div className="logo-container">
               <img 
                 src="https://newsabalita.wordpress.com/wp-content/uploads/2024/09/leader_proudlyaustralian_logo.png" 
@@ -64,7 +64,7 @@ export default function NavBar() {
                 className="logo-image"
               />
             </div>
-          </a>
+          </Link>
           <nav className="nav-menu">
             <ul className="nav-list">
               {menuItems.map((item) => (
@@ -82,9 +82,9 @@ export default function NavBar() {
                       {activeDropdown === item.title && <item.dropdown />}
                     </div>
                   ) : (
-                    <a href={item.href} className="nav-link">
+                    <Link to={item.to} className="nav-link">
                       {item.title}
-                    </a>
+                    </Link>
                   )}
                 </li>
               ))}
