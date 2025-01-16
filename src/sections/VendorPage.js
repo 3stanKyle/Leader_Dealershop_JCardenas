@@ -1,37 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './VendorPageStyle.css';
 import {
-  Key,
-  Briefcase,
-  HardDrive,
-  BarChart2,
-  Cloud,
-  Wrench,
-  Shield,
-  Building2,
-  Network,
-  Printer,
-  Server,
-  Database,
-  Monitor,
-  Cpu,
-  Laptop,
-  Gamepad,
-  Wifi,
-  Smartphone,
-  Camera,
-  Power,
-  Home,
-  Headphones,
-  Video,
-  Laptop2,
-  Settings,
-  Users,
-  Zap,
-  PhoneCall
+  Key, Briefcase, HardDrive, BarChart2, Cloud, Wrench, Shield, Building2,
+  Network, Printer, Server, Database, Monitor, Cpu, Laptop, Gamepad, Wifi,
+  Smartphone, Camera, Power, Home, Headphones, Video, Laptop2, Settings,
+  Users, Zap, PhoneCall, ChevronDown,
 } from 'lucide-react';
 
 const categories = [
+  { name: 'All', icon: null },
   { name: 'Access Control', icon: Key },
   { name: 'Accessories', icon: Briefcase },
   { name: 'Backup & Recovery', icon: HardDrive },
@@ -76,68 +53,65 @@ const dummyVendors = [
   { name: 'Aywun', category: 'Components', phone: '1300 308 673', website: 'https://www.leadersystems.com.au/' },
 ];
 
+const AccordionDropdown = ({ options, value, onChange }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => setIsOpen(!isOpen);
+
+  const handleOptionClick = (option) => {
+    onChange(option);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className={`accordion-dropdown ${isOpen ? 'open' : ''}`}>
+      <div className="accordion-header" onClick={handleToggle}>
+        {value.icon && React.createElement(value.icon, { size: 20 })}
+        <span>{value.name}</span>
+        <ChevronDown className={`dropdown-arrow ${isOpen ? 'open' : ''}`} size={20} />
+      </div>
+      {isOpen && (
+        <div className="accordion-content">
+          {options.map((option) => (
+            <div
+              key={option.name}
+              className={`accordion-item ${option.name === value.name ? 'selected' : ''}`}
+              onClick={() => handleOptionClick(option)}
+            >
+              {option.icon && React.createElement(option.icon, { size: 20 })}
+              <span>{option.name}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const VendorPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
-  useEffect(() => {
-    const intervalIds = [1, 2, 3].map((rowIndex) => {
-      return setInterval(() => {
-        if (!isPaused) {
-          const carousel = document.querySelector(`.category-row-${rowIndex}`);
-          if (carousel) {
-            const scrollAmount = rowIndex % 2 === 0 ? 1 : -1;
-            carousel.scrollLeft += scrollAmount;
-            if (
-              (scrollAmount > 0 && carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) ||
-              (scrollAmount < 0 && carousel.scrollLeft <= 0)
-            ) {
-              carousel.scrollLeft = scrollAmount > 0 ? 0 : carousel.scrollWidth - carousel.clientWidth;
-            }
-          }
-        }
-      }, 50);
-    });
-
-    return () => intervalIds.forEach(clearInterval);
-  }, [isPaused]);
-
-  const filteredVendors = selectedCategory
-    ? dummyVendors.filter((vendor) => vendor.category === selectedCategory)
-    : dummyVendors;
+  const filteredVendors = selectedCategory.name === 'All'
+    ? dummyVendors
+    : dummyVendors.filter((vendor) => vendor.category === selectedCategory.name);
 
   return (
     <div className="vendor-page">
       <div className="vendor-page-content">
         <h1 className="vendor-page-title">Our Vendor Partners</h1>
         <p className="vendor-page-subtitle">Leader is proud to represent a broad range of global and local tier-one and tier-two hardware, software, cloud and IoT vendors</p>
-      </div>
-      
-      <div className="category-carousel-container">
-        <div className="category-carousel">
-          {[1, 2, 3].map((rowIndex) => (
-            <div
-              key={rowIndex}
-              className={`category-row category-row-${rowIndex}`}
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
-              {categories.map((category) => (
-                <button
-                  key={category.name}
-                  className="category-button"
-                  onClick={() => setSelectedCategory(category.name)}
-                >
-                  {React.createElement(category.icon, { className: "category-icon", size: 20 })}
-                  <span className="category-name">{category.name}</span>
-                </button>
-              ))}
-            </div>
-          ))}
+        
+        <div className="category-selection-container">
+          <h2>Select Category</h2>
+          <div className="category-dropdown-wrapper">
+            <AccordionDropdown
+              options={categories}
+              value={selectedCategory}
+              onChange={setSelectedCategory}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="vendor-page-content">
         <div className="vendor-grid">
           {filteredVendors.map((vendor) => (
             <div key={vendor.name} className="vendor-card">

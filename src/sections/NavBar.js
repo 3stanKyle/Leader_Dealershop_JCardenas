@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css';
+import './NavBar.css'
 import SolutionsDropdown from './SolutionsDropdown';
 import TrainingDropdown from './TrainingDropdown';
 import SupportDropdown from './SupportDropdown';

@@ -6,6 +6,7 @@ import AnimatedStatsCounter from './sections/AnimatedStatsCounter';
 import KeySolutions from './sections/KeySolutions';
 import PartnerBenefits from './sections/PartnerBenefits';
 import VendorPage from './sections/VendorPage';
+import TrustedLeaderGallery from './sections/TrustedLeaderGallery';
 import './App.css';
 
 function Home() {
@@ -15,6 +16,7 @@ function Home() {
       <AnimatedStatsCounter />
       <PartnerBenefits />
       <KeySolutions />
+      <TrustedLeaderGallery />
     </>
   );
 }
